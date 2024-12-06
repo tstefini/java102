@@ -115,9 +115,53 @@ public class Main {
          int x2 = 2, y2 = 4;
          int x3 = 5, y3 = 3;
          System.out.println(findCircle(x1, y1, x2, y2, x3, y3));    
+
+
+         LibraryItem[] items = new LibraryItem[]{
+            new LibraryItem("Book 1", "ID001"),
+            new LibraryItem("Book 2", "ID002"),
+            new LibraryItem("Magazine 1", "ID003")
+        };
+
+        // Print initial state before returning items
+        System.out.println("Before returning items:");
+        for (LibraryItem item : items) {
+            item.printStatus();  // Print if it's checked out or not
+        }
+
+        // Call the returnAll method
+        returnAll(items);
+
+        // Print final state after returning items
+        System.out.println("\nAfter returning items:");
+        for (LibraryItem item : 
+        
+        items) {
+            item.printStatus();  // Verify if all items have been returned
+        }
+
+
+            // Create an array of LibraryItem objects
+           
+    
+            // Make some of the items checked out
+            items[1].checkOut(); // Mark "Book 2" as checked out
+    
+            // Get the list of available items
+            ArrayList<LibraryItem> available = availableItems(items);
+    
+            // Print the available items
+            System.out.println("Available items:");
+            for (LibraryItem item : available) {
+                System.out.println(item.title);
+            }
+        
+    }
+
+
                    //end of public static void main(String[] args)
              
-                 }
+                 
              
          
              static <T> String arrayToString(T[] arr) {
@@ -169,4 +213,25 @@ public class Main {
             A a = new A(12.3, 430);
             B b = new B(-12.31, "hello");
 
+            A bInDisguise = new B(1002.013, "world");
+          
+            public static void returnAll(LibraryItem[] items) {
+                for (LibraryItem item : items) {
+                    item.returnItem(); // Assuming each LibraryItem has a returnToLibrary method
+                }
+            }
+            
+           // Static method to get all available LibraryItems
+    public static ArrayList<LibraryItem> availableItems(LibraryItem[] items) {
+        ArrayList<LibraryItem> availableItemsList = new ArrayList<>(); // Create an empty ArrayList
+
+        // Loop through each item in the input array
+        for (LibraryItem item : items) {
+            if (item.available()) { // Check if the item is available
+                availableItemsList.add(item); // Add available item to the list
+            }
+        }
+
+        return availableItemsList; // Return the ArrayList with available items
+    } 
    }
